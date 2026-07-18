@@ -17,5 +17,15 @@ func main() {
 
 	fmt.Println(m.Load("abc"))
 
+	type something struct {
+		s string
+	}
+
+	// Works with nils too
+	m2 := syncmap.New[string, *something](nil)
+	value, exists := m2.Load("abcd")
+
+	fmt.Println(value, exists)
 }
+
 ```
